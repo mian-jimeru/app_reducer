@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function AddTask(){
-    return(
-        <div>
-            <input type='text' />
-            <button>Agregar</button>
-        </div>
+function AddTask({ OnAddEvent }) {
+    const [text, setText] = useState('');
+
+    return (
+        <tr>
+            <td></td>
+            <td>
+                <input type='text' onChange={(e) => setText(e.target.value)} placeholder="Agregar tarea" value={text} />
+            </td>
+            <td>
+                <button onClick={
+                    () => { OnAddEvent(text); setText(''); }
+                    }>Agregar</button>
+            </td>
+        </tr>
     );
 }
 
